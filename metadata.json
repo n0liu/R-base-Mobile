@@ -1,0 +1,5 @@
+{
+  "name": "R-base Mobile",
+  "description": "A mobile-responsive scientific paper analysis platform featuring AI summaries, key data extraction, and interactive chat.",
+  "requestFramePermissions": []
+}
