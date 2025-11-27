@@ -1,3 +1,4 @@
+
 export interface Author {
   name: string;
   initial: string;
@@ -39,4 +40,19 @@ export interface Figure {
   id: string;
   label: string;
   placeholderColor: string;
+}
+
+export interface Organization {
+  id: string;
+  acronym: string;
+  name: string;
+}
+
+export interface RelatedArticle {
+  id: string;
+  type: string;
+  typeColor: string; // Tailwind text color class
+  journal: string;
+  title: string;
+  summary: string;
 }

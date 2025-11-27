@@ -1,4 +1,5 @@
-import { Author, AIPoint, Figure, SectionData } from './types';
+
+import { Author, AIPoint, Figure, SectionData, Organization, RelatedArticle } from './types';
 
 export const PAPER_INFO = {
   journal: "Nature Metabolism [IF:20.8]",
@@ -50,6 +51,40 @@ export const FIGURES: Figure[] = [
 
 export const INTERPRETATION_TABS = [
   "原文摘要", "创新要点", "科普解读", "研究背景", "研究方法", "转化前景"
+];
+
+export const RELATED_ORGS: Organization[] = [
+  { id: '1', acronym: 'CAU', name: '中国农业大学食品科学与营养工程学院' },
+  { id: '2', acronym: 'AMMS', name: '军事科学院军事医学研究院' },
+  { id: '3', acronym: 'IOZ,CAS', name: '中国科学院动物研究所' },
+  { id: '4', acronym: 'CBS,CAU', name: '中国农业大学生物学院' },
+];
+
+export const RELATED_ARTICLES: RelatedArticle[] = [
+  {
+    id: '1',
+    type: 'Review',
+    typeColor: 'text-purple-600',
+    journal: 'Gut Microbes [IF:12.2]',
+    title: 'Science: 用化学遗传学方法，解析健康与疾病中的菌群机制（综述）',
+    summary: 'How do bacterial infections in bowel cancer affect the immune system and DNA damage?'
+  },
+  {
+    id: '2',
+    type: 'News & Views',
+    typeColor: 'text-green-600',
+    journal: 'Gut Microbes [IF:12.2]',
+    title: 'Nature Reviews: FMT和益生菌干预预后考虑潜在风险',
+    summary: 'How do bacterial infections in bowel cancer affect the immune system and DNA damage?'
+  },
+  {
+    id: '3',
+    type: 'Article',
+    typeColor: 'text-blue-600',
+    journal: 'Gut Microbes [IF:12.2]',
+    title: '艾克/何真/毛仁/来书Cell子刊：菌群如何影响克罗恩病中的“爬行脂肪”形成？',
+    summary: 'How do bacterial infections in bowel cancer affect the immune system and DNA damage?'
+  }
 ];
 
 // New Structured Data for the "Knowledge Graph" section

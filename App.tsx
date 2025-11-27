@@ -1,20 +1,21 @@
+
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { ChatInput } from './components/ChatInput';
 import { StructuredData } from './components/StructuredData';
 import { Drawer } from './components/Drawer';
-import { Share2, Star, ChevronRight, LayoutList } from 'lucide-react';
-import { PAPER_INFO, AUTHORS, AI_POINTS, FIGURES, INTERPRETATION_TABS, STRUCTURED_DATA } from './constants';
+import { Share2, Star, ChevronRight, LayoutList, RotateCw } from 'lucide-react';
+import { PAPER_INFO, AUTHORS, AI_POINTS, FIGURES, INTERPRETATION_TABS, STRUCTURED_DATA, RELATED_ORGS, RELATED_ARTICLES } from './constants';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState(INTERPRETATION_TABS[0]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="h-[100dvh] w-full bg-gray-50 flex flex-col overflow-hidden">
       <Header />
 
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto overscroll-y-contain">
         {/* Paper Title Card */}
         <div className="bg-white p-4 mb-2 shadow-sm">
           <div className="flex items-center gap-2 mb-3">
@@ -121,8 +122,55 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer spacing for sticky input */}
-        <div className="h-16"></div>
+        {/* Related Articles */}
+        <div className="bg-white p-4 mb-2 shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-bold text-gray-800">相关文章</h3>
+            <div className="flex items-center gap-2 text-xs text-gray-500">
+              <span className="hidden xs:inline">关联词: </span>
+              <span className="text-blue-600">细菌感染</span>
+              <span className="text-blue-600">DNA损伤</span>
+              <RotateCw className="w-3 h-3 ml-1" />
+            </div>
+          </div>
+          <div className="space-y-4">
+            {RELATED_ARTICLES.map((article) => (
+              <div key={article.id} className="flex flex-col gap-1 pb-3 border-b border-gray-50 last:border-0 last:pb-0">
+                <div className="flex items-center flex-wrap gap-x-2 text-xs mb-0.5">
+                  <span className={`font-bold ${article.typeColor}`}>{article.type}</span>
+                  <span className="text-gray-300">{'>'}</span>
+                  <span className="text-blue-600 font-medium">{article.journal}</span>
+                </div>
+                <h4 className="text-sm font-bold text-gray-900 leading-tight">
+                  {article.title}
+                </h4>
+                <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
+                  {article.summary}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Related Organizations */}
+        <div className="bg-white p-4 mb-2 shadow-sm">
+          <h3 className="text-sm font-bold text-gray-800 mb-3">相关机构</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {RELATED_ORGS.map((org) => (
+              <div key={org.id} className="flex flex-col items-center">
+                <div className="w-full aspect-[2/1] bg-blue-50 rounded-lg border border-blue-100 flex items-center justify-center mb-2">
+                  <span className="text-xl font-bold text-blue-600">{org.acronym}</span>
+                </div>
+                <span className="text-xs text-center text-gray-600 leading-tight">
+                  {org.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer spacing for sticky input - reduced height */}
+        <div className="h-[72px]"></div>
       </main>
 
       {/* Floating Action Button for Structured Data */}
